@@ -1,0 +1,41 @@
+# FOLDER USE Train_app
+# Make sure all clean up before setup train
+# Cascade_dir must clean before start train
+
+# the opencv_annotation executable can be found in opencv/build/x64/vc15/bin
+# 
+# Type CMD in folder root win explorer to direct in to terminal
+#
+# generate positive description file using:
+
+## opencv_annotation.exe --annotations=pos.txt --images=positive/
+
+# You click once to set the upper left corner, then again to set the lower right corner.
+# Press 'c' to confirm.
+# Or 'd' to undo the previous confirmation.
+# When done, click 'n' to move to the next image.
+# Press 'esc' to exit.
+# Will exit automatically when you've annotated all of the images
+
+# generate positive samples from the annotations to get a vector file using:
+## opencv_createsamples.exe -info pos.txt -w 24 -h 24 -num 1000 -vec pos.vec
+
+# Create neg.txt with create_negtxt inside Train_app
+## config the save location and negative img location
+
+# train the cascade classifier model using:
+## opencv_traincascade.exe -data cascade_dir/ -vec pos.vec -bg neg.txt -numPos 50 -numNeg 50 -numStages 10 -w 24 -h 24
+
+# numPos and numNeg is how total image a valid
+# Adjust w and h to make more accurated and must same in open_createsamples w and h
+
+# my final classifier training arguments:
+## opencv_traincascade.exe -data cascade_dir/ -vec pos.vec -bg neg.txt -precalcValBufSize 6000 -precalcIdxBufSize 6000 -numPos 200 -numNeg 1000 -numStages 12 -w 24 -h 24 -maxFalseAlarmRate 0.4 -minHitRate 0.999
+
+IDEA
+
+Make auto train when object select
++ Generate image with target with all position/rotation/brightness/etc for train
+Haar cascade add function to control manipulation value example brightness
+
+combine Haar cascade with TrackingCSRT
