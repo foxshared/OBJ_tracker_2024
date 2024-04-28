@@ -5,6 +5,7 @@
 # Capture img save train_app positve and negatif folder
 
 # the opencv_annotation executable can be found in opencv/build/x64/vc15/bin
+# Create train_app folder copy all bin content to train_app folder
 # 
 # Type CMD in folder root win explorer to direct in to terminal
 #
