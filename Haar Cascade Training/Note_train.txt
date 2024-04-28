@@ -2,6 +2,8 @@
 # Make sure all clean up before setup train
 # Cascade_dir must clean before start train
 
+# Capture img save train_app positve and negatif folder
+
 # the opencv_annotation executable can be found in opencv/build/x64/vc15/bin
 # 
 # Type CMD in folder root win explorer to direct in to terminal
